@@ -1,0 +1,13 @@
+
+@import "_partial.scss";
+
+@each $class-name in $typography-classes {
+  .#{$class-name} {
+    @extend %#{$class-name};
+  }
+}
+
+html {
+  // For rem units support
+  font-size: $font-size-basis-normal;
+}

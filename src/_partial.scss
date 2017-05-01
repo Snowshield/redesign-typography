@@ -1,0 +1,251 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,500,300italic,500italic,700italic,900,300);
+
+$font-size-basis-small: 50% !default;
+$font-size-basis-normal: 62.5% !default;
+$font-size-basis-large: 75% !default;
+
+$bg-default-light: #EEEEEE !default; // Google Grey 200
+$bg-default-dark: #212121 !default; // Google Grey 900
+
+body {
+  font-family: "Roboto", 'Helvetica Neue, Helvetica, Arial';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  background-color: $bg-default-light;
+}
+
+/* Material Design Typography */
+// Variables
+// ----------------------------
+//** Typographic Scale
+$font-size-map: (
+  "display-4": 112px,
+  "display-3": 56px,
+  "display-2": 45px,
+  "display-1": 34px,
+  "headline":  24px,
+  "title":     20px,
+  "subhead-2": 15px,
+  "subhead-1": 15px,
+  "body-2":    13px,
+  "body-1":    13px,
+  "caption":   12px,
+  "label":     12px,
+  "menu":      13px,
+  "button":    14px,
+) !default;
+
+//** Typographic Scale for devices (max-width: 960px)
+$font-size-for-device-map: (
+  "subhead-2": 16px,
+  "subhead-1": 16px,
+  "body-2": 14px,
+  "body-1": 14px,
+  "menu": 14px,
+) !default;
+
+//** Basic Styles
+$font-weight-map: (
+  "display-4": 200,
+  "display-3": 300,
+  "display-2": 300,
+  "display-1": 400,
+  "headline":  400,
+  "title":     500,
+  "subhead-2": 500,
+  "subhead-1": 400,
+  "body-2":    500,
+  "body-1":    400,
+  "caption":   400,
+  "label":     400,
+  "menu":      500,
+  "button":    500,
+) !default;
+
+//** Line Height
+$line-height-map: (
+  "display-4": 128px,
+  "display-3": 84px,
+  "display-2": 48px,
+  "display-1": 40px,
+  "headline":  32px,
+  "title":     28px,
+  "subhead-2": 28px,
+  "subhead-1": 24px,
+  "body-2":    24px,
+  "body-1":    20px,
+  "caption":   20px,
+  "label":     20px,
+  "menu":      20px,
+  "button":    20px,
+) !default;
+
+//** Tracking and kerning
+$letter-spacing-map: (
+  "display-4": -0.1px,
+  "display-3": -0.05px,
+  "display-2": 0px,
+  "display-1": 0px,
+  "headline":  0px,
+  "title":     0.05px,
+  "subhead-2": 0.1px,
+  "subhead-1": 0.1px,
+  "body-2":    0.1px,
+  "body-1":    0.1px,
+  "caption":   0.2px,
+  "label":     0.1px,
+  "menu":      0.1px,
+  "button":    0.1px,
+) !default;
+
+//** Basic color.
+$typography-color-default: black !default;
+
+$font-color-opacity-constants-map: (
+  "primary":   0.87,
+  "secondary": 0.54,
+  "disabled":  0.38,
+) !default;
+
+$font-color-opacity-map: (
+  "display-4": map-get($font-color-opacity-constants-map, "secondary"),
+  "display-3": map-get($font-color-opacity-constants-map, "secondary"),
+  "display-2": map-get($font-color-opacity-constants-map, "secondary"),
+  "display-1": map-get($font-color-opacity-constants-map, "secondary"),
+  "headline":  map-get($font-color-opacity-constants-map, "primary"),
+  "title":     map-get($font-color-opacity-constants-map, "primary"),
+  "subhead-2": map-get($font-color-opacity-constants-map, "primary"),
+  "subhead-1": map-get($font-color-opacity-constants-map, "primary"),
+  "body-2":    map-get($font-color-opacity-constants-map, "primary"),
+  "body-1":    map-get($font-color-opacity-constants-map, "primary"),
+  "caption":   map-get($font-color-opacity-constants-map, "secondary"),
+  "label":     map-get($font-color-opacity-constants-map, "primary"),
+  "menu":      map-get($font-color-opacity-constants-map, "primary"),
+  "button":    map-get($font-color-opacity-constants-map, "primary"),
+) !default;
+
+// Typography
+// Typographic Scale & Basic Styles
+// -------------------------
+
+@mixin font-size($font-size: 14) {
+  font-size: $font-size;
+  font-size: ($font-size/10px)+0rem;
+}
+
+@mixin line-height($leading-size: 14) {
+  line-height: $leading-size;
+  line-height: ($leading-size/10px)+0rem;
+}
+
+@mixin letter-spacing($kerning-size: 0) {
+  letter-spacing: $kerning-size;
+  letter-spacing: ($kerning-size/10px)+0rem;
+}
+
+$typography-classes: (
+  "display-4",
+  "display-3",
+  "display-2",
+  "display-1",
+  "headline",
+  "title",
+  "subhead-2",
+  "subhead-1",
+  "body-2",
+  "body-1",
+  "caption",
+  "label",
+  "menu",
+  "button"
+);
+
+@function text-transform-for-class($class-name) {
+  @if ($class-name == "button") {
+    @return uppercase;
+  }
+  @return inherit;
+}
+
+@function opacifiy-color-for-class($color, $class-name) {
+  $color-opacity: map-get($font-color-opacity-map, $class-name);
+  @return rgba($color, $color-opacity);
+}
+
+@mixin typography-color-theme($color, $classes: $typography-classes) {
+  @each $class-name in $classes {
+    .#{$class-name} {
+      color: opacifiy-color-for-class($color, $class-name);
+    }
+    // increase priority
+    &.#{$class-name}.#{$class-name} {
+      color: opacifiy-color-for-class($color, $class-name);
+    }
+  }
+}
+
+@each $class-name in $typography-classes {
+  %#{$class-name} {
+    @include font-size(map-get($font-size-map, $class-name));
+    @include line-height(map-get($line-height-map, $class-name));
+    @include letter-spacing(map-get($letter-spacing-map, $class-name));
+
+    font-weight: map-get($font-weight-map, $class-name);
+    color: opacifiy-color-for-class($typography-color-default, $class-name);
+    text-transform: text-transform-for-class($class-name);
+  }
+}
+
+$typography-classes-for-device: (
+  "subhead-2",
+  "subhead-1",
+  "body-2",
+  "body-1",
+  "menu",
+);
+
+// Font-size for device
+@media only screen and (max-width: 960px) {
+  @each $class-name in $typography-classes-for-device {
+    %#{$class-name} {
+      @include font-size(map-get($font-size-for-device-map, $class-name));
+    }
+  }
+}
+
+$typography-display-classes: (
+  "display-4",
+  "display-3",
+  "display-2",
+  "display-1",
+);
+@each $class-name in $typography-display-classes {
+  %#{$class-name} {
+    $line-height-title: map-get($line-height-map, "title");
+
+    margin: 0 0 $line-height-title/2 0;
+    margin-bottom: $line-height-title/20px+0rem;
+  }
+}
+
+$typography-not-display-classes: (
+  "headline",
+  "title",
+  "subhead-2",
+  "subhead-1",
+  "body-2",
+  "body-1",
+  "caption",
+  "label",
+  "menu",
+  "button",
+);
+@each $class-name in $typography-not-display-classes {
+  %#{$class-name} {
+    $line-height-body-1: map-get($line-height-map, "body-1");
+
+    margin: 0 0 $line-height-body-1/2 0;
+    margin-bottom: $line-height-body-1/20px+0rem;
+  }
+}

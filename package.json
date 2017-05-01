@@ -1,0 +1,35 @@
+{
+  "name": "redesign-typography",
+  "version": "1.0.0",
+  "description": "Highly customizable material typography",
+  "main": "dist/index.css",
+  "dependencies": {
+    "node-sass": "^4.5.2"
+  },
+  "scripts": {
+    "prepublish": "node-sass src/index.scss --output dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Snowshield/redesign-typography.git"
+  },
+  "keywords": [
+    "typography",
+    "material",
+    "flat",
+    "scss",
+    "sass",
+    "css",
+    "google"
+  ],
+  "author": "Nikita <github.snowshield@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Snowshield/redesign-typography/issues"
+  },
+  "homepage": "https://github.com/Snowshield/redesign-typography#readme",
+  "devDependencies": {
+    "node-sass": "^4.5.2"
+  }
+}
