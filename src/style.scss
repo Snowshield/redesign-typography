@@ -1,0 +1,23 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,500,300italic,500italic,700italic,900,300);
+
+$bg-default-light: #EEEEEE !default; // Google Grey 200
+$bg-default-dark: #212121 !default; // Google Grey 900
+
+body {
+  font-family: "Roboto", 'Helvetica Neue, Helvetica, Arial';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  background-color: $bg-default-light;
+}
+
+@each $class-name in $typography-classes {
+  .#{$class-name} {
+    @extend %#{$class-name};
+  }
+}
+
+html {
+  // For rem units support
+  font-size: $font-size-basis-normal;
+}

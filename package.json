@@ -1,11 +1,8 @@
 {
   "name": "redesign-typography",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Highly customizable material typography",
   "main": "dist/index.css",
-  "dependencies": {
-    "node-sass": "^4.5.2"
-  },
   "scripts": {
     "prepublish": "node-sass src/index.scss --output dist",
     "test": "echo \"Error: no test specified\" && exit 1"

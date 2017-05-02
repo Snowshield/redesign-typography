@@ -1,21 +1,9 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,500,300italic,500italic,700italic,900,300);
+/* Material Design Typography */
 
 $font-size-basis-small: 50% !default;
 $font-size-basis-normal: 62.5% !default;
 $font-size-basis-large: 75% !default;
 
-$bg-default-light: #EEEEEE !default; // Google Grey 200
-$bg-default-dark: #212121 !default; // Google Grey 900
-
-body {
-  font-family: "Roboto", 'Helvetica Neue, Helvetica, Arial';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  background-color: $bg-default-light;
-}
-
-/* Material Design Typography */
 // Variables
 // ----------------------------
 //** Typographic Scale
@@ -125,8 +113,7 @@ $font-color-opacity-map: (
   "button":    map-get($font-color-opacity-constants-map, "primary"),
 ) !default;
 
-// Typography
-// Typographic Scale & Basic Styles
+// Typography partials
 // -------------------------
 
 @mixin font-size($font-size: 14) {
